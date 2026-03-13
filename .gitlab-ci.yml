@@ -1,5 +1,14 @@
 stages:
+  - deploy
   - mirror
+
+deploy:
+  stage: deploy
+  script:
+    - aws s3 sync . s3://engineeringwithai --exclude ".git/*" --exclude ".gitlab-ci.yml" --exclude ".gitignore" --exclude "CLAUDE.md" --delete
+    - aws cloudfront create-invalidation --distribution-id EPJSTCT5D6CBK --paths "/*"
+  only:
+    - main
 
 mirror:
   stage: mirror
