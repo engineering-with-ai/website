@@ -79,7 +79,7 @@ section { padding:100px 48px; }
 .step-content p { font-size:13px; color:var(--ink-mid); line-height:1.65; }
 
 /* PROJECT */
-.project-section { background:var(--bg2); }
+.project-section { background:var(--bg2); padding-top:60px; }
 .project-card { background:var(--white); border:1px solid var(--border); padding:56px; max-width:1200px; display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; position:relative; overflow:hidden; }
 .project-card::before { content:'LIVE PROJECT'; position:absolute; top:28px; right:28px; font-family:var(--mono); font-size:9px; letter-spacing:0.2em; color:var(--white); background:var(--accent); padding:5px 12px; }
 .project-card-left h3 { font-family:var(--mono); font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:14px; }
@@ -221,6 +221,17 @@ section { padding:100px 48px; }
 .path-card.learn .path-price { color:var(--ink-soft); }
 .path-card.consult .path-price { color:rgba(255,255,255,0.2); }
 
+/* AUDIENCE */
+.audience-section { background:var(--bg); }
+.audience-inner { max-width:800px; }
+.audience-inner h2 { font-family:var(--serif); font-size:clamp(30px,2.8vw,46px); font-weight:400; line-height:1.2; margin-bottom:32px; }
+.audience-list { list-style:none; }
+.audience-list li { font-size:15px; color:var(--ink-mid); line-height:1.75; padding:18px 0; border-bottom:1px solid var(--border); display:flex; gap:16px; }
+.audience-card { background:var(--white); border:1px solid var(--border); padding:48px; }
+.audience-list li:first-child { border-top:none; padding-top:0; }
+.audience-list li::before { content:'→'; color:var(--accent); flex-shrink:0; font-family:var(--mono); padding-top:1px; }
+.audience-caveat { font-family:var(--mono); font-size:12px; color:var(--ink-soft); letter-spacing:0.04em; margin-top:28px; line-height:1.6; }
+
 /* OSS */
 .oss-section { background:var(--bg2); }
 .oss-inner { max-width:1200px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
@@ -237,7 +248,7 @@ section { padding:100px 48px; }
 .oss-artifact:hover .oss-arrow { color:var(--accent); }
 
 /* CONSULTING */
-.consult-section { background:var(--white); }
+.consult-section { background:var(--bg); }
 .consult-inner { max-width:640px; }
 .consult-inner h2 { font-family:var(--serif); font-size:clamp(32px,3vw,50px); font-weight:400; line-height:1.15; margin-bottom:20px; }
 .consult-inner h2 em { font-style:italic; color:var(--ink-mid); }
@@ -331,11 +342,11 @@ footer { background:var(--ink); padding:80px 48px 40px; }
   </a>
   <ul class="nav-links">
     <li><a href="#methodology">Methodology</a></li>
+    <li><a href="#oss">Open Source</a></li>
     <li><a href="#work">Work</a></li>
     <li><a href="#learn">Learn</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#consulting">Consulting</a></li>
-    <li><a href="#oss">Open Source</a></li>
   </ul>
   <a href="#consulting" class="nav-cta">Hire</a>
 </nav>
@@ -361,8 +372,8 @@ footer { background:var(--ink); padding:80px 48px 40px; }
   </div>
   <div class="proof-div"></div>
   <div class="proof-item">
-    <div class="proof-num">$5K–50K</div>
-    <div class="proof-lbl">Consulting<br>engagements</div>
+    <div class="proof-num">12</div>
+    <div class="proof-lbl">Years<br>engineering</div>
   </div>
   <div class="proof-div"></div>
   <div class="proof-item">
@@ -412,9 +423,56 @@ footer { background:var(--ink); padding:80px 48px 40px; }
 </section>
 
 
+<!-- AUDIENCE -->
+<section class="audience-section">
+  <div class="audience-inner reveal">
+    <div class="section-label">Audience</div>
+    <h2>Who this is for:</h2>
+    <div class="audience-card">
+      <ul class="audience-list">
+        <li>AI datacenter developers integrating BESS, thermal, and compute into deployable infrastructure — and needing the engineering documentation to match.</li>
+        <li>Microgrid and energy operators who need an EMS that reasons about sensor data, not just logs it.</li>
+        <li>Defense and sovereign deployments where off-grid, air-gapped, or expeditionary compute has to work the first time.</li>
+        <li>Engineering teams adopting AI-augmented workflows across electrical, mechanical, or software disciplines — and want a methodology, not a toolchain tutorial.</li>
+      </ul>
+      <p class="audience-caveat">If you're still in the "should we use AI?" phase, this isn't the right starting point.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OSS -->
+<section class="oss-section" id="oss">
+  <div class="oss-inner">
+    <div class="oss-left reveal">
+      <h2><em>Built in public.</em><br>Open sourced.</h2>
+      <p>Open source electrical, mechanical, and software templates from the Engineering With AI methodology. Each one is a solved problem class — validation gates, simulation harness, and agent system prompt included. Fork it, adapt it, use it on your own projects.</p>
+      <a href="https://github.com/engineering-with-ai" class="btn-primary" target="_blank" rel="noopener">View all templates on GitHub →</a>
+    </div>
+    <div class="oss-right reveal">
+      <div class="oss-sample-label">Sample templates — 3 of 19</div>
+      <a href="https://github.com/engineering-with-ai/electrical-pcb" class="oss-artifact" target="_blank" rel="noopener">
+        <div class="oss-icon">⚡</div>
+        <div class="oss-info"><h4>[elec] cm4-carrier-board</h4><p>Electrical · SKiDL netlist, PySpice simulation, KiCad layout — full validation pipeline</p></div>
+        <div class="oss-arrow">→</div>
+      </a>
+      <a href="https://github.com/engineering-with-ai/mechanical-model" class="oss-artifact" target="_blank" rel="noopener">
+        <div class="oss-icon">🔩</div>
+        <div class="oss-info"><h4>[mech] l-bracket-connection</h4><p>Mechanical · CadQuery parametric CAD, CalculiX FEM, GD&amp;T drawing export</p></div>
+        <div class="oss-arrow">→</div>
+      </a>
+      <a href="https://github.com/engineering-with-ai/python-mcp-server" class="oss-artifact" target="_blank" rel="noopener">
+        <div class="oss-icon">🤖</div>
+        <div class="oss-info"><h4>[software] python-domain-mcp-server</h4><p>Software · Neo4j graph + pgvector RAG, fact verification, FastMCP tools</p></div>
+        <div class="oss-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- PROJECT -->
 <section class="project-section" id="work">
   <div class="section-label reveal">Live Project</div>
+  <p class="reveal" style="font-size:15px;color:var(--ink-mid);line-height:1.75;max-width:600px;margin-bottom:48px;">Here's the methodology applied to a real project — all three disciplines converging on one system.</p>
   <div class="project-card reveal">
     <div class="project-card-left">
       <h3>Current Build</h3>
@@ -439,67 +497,6 @@ footer { background:var(--ink); padding:80px 48px 40px; }
       <div class="spec-row"><span class="spec-key">Elec. Templates</span><span class="spec-val">DC Bus Protection · BMS Parallel Control</span></div>
       <div class="spec-row"><span class="spec-key">Mech. Templates</span><span class="spec-val">Thermal Loop Sizing · Container Structure</span></div>
       <div class="spec-row"><span class="spec-key">Status</span><span class="spec-val">Active — documented in public</span></div>
-    </div>
-
-    <!-- SYSTEM ARCHITECTURE DIAGRAM -->
-    <div class="arcnode-diagram">
-      <div class="arch-diagram-wrap">
-        <div class="arch-diagram-label">System Architecture</div>
-        <div class="arch-inner">
-
-          <!-- Energy sources -->
-          <div class="arch-row">
-            <div class="arch-node">
-              <div class="arch-node-label">Nuclear</div>
-              <div class="arch-node-sub">Baseload</div>
-            </div>
-            <div class="arch-node">
-              <div class="arch-node-label">Solar Array</div>
-              <div class="arch-node-sub">Variable</div>
-            </div>
-            <div class="arch-node">
-              <div class="arch-node-label">Grid</div>
-              <div class="arch-node-sub">Optional</div>
-            </div>
-          </div>
-
-          <div class="arch-conn"></div>
-
-          <!-- Grid Interface Module -->
-          <div class="arch-row">
-            <div class="arch-node module">
-              <div class="arch-node-label">Grid Interface Module</div>
-              <div class="arch-node-sub">Grid Interface — Optional · 10ft ISO</div>
-            </div>
-          </div>
-
-          <div class="arch-conn"></div>
-
-          <!-- BESS Module -->
-          <div class="arch-row">
-            <div class="arch-node module">
-              <div class="arch-node-label">BESS Module ×N</div>
-              <div class="arch-node-sub">Parallel Stack — Autonomous BMS · 10ft ISO</div>
-            </div>
-          </div>
-
-          <div class="arch-conn"></div>
-
-          <!-- Thermal + Compute -->
-          <div class="arch-row">
-            <div class="arch-node module">
-              <div class="arch-node-label">Thermal Module</div>
-              <div class="arch-node-sub">DLC Plant · 10ft ISO</div>
-            </div>
-            <div class="arch-spacer"></div>
-            <div class="arch-node module-wide">
-              <div class="arch-node-label">Compute ×N</div>
-              <div class="arch-node-sub">GPU Racks · Training / Inference + EMS · 10ft ISO</div>
-            </div>
-          </div>
-
-        </div>
-      </div>
     </div>
 
   </div>
@@ -538,40 +535,10 @@ footer { background:var(--ink); padding:80px 48px 40px; }
         <li>Energy tech startup advisory</li>
       </ul>
       <div class="path-cta">Inquiry only →</div>
-      <div class="path-price">$5K – $50K</div>
     </a>
   </div>
 </section>
 
-<!-- OSS -->
-<section class="oss-section" id="oss">
-  <div class="oss-inner">
-    <div class="oss-left reveal">
-      <h2><em>Built in public.</em><br>No excuses.</h2>
-      <p>Open source electrical, mechanical, and software templates from the Engineering With AI methodology. Each one is a solved problem class — validation gates, simulation harness, and agent system prompt included. Fork it, adapt it, use it on your own projects.</p>
-      <a href="https://github.com/engineering-with-ai" class="btn-secondary" target="_blank" rel="noopener">View all templates on GitHub →</a>
-    </div>
-    <div class="oss-right reveal">
-      <div class="oss-sample-label">Sample templates — 3 of 18</div>
-      <a href="https://github.com/engineering-with-ai/electrical-pcb" class="oss-artifact" target="_blank" rel="noopener">
-        <div class="oss-icon">⚡</div>
-        <div class="oss-info"><h4>[elec] dc-bus-protection</h4><p>Electrical · Fault current, fuse coordination, bus hold-up — sympy + PySpice TDD</p></div>
-        <div class="oss-arrow">→</div>
-      </a>
-
-      <a href="https://github.com/engineering-with-ai/mechanical-model" class="oss-artifact" target="_blank" rel="noopener">
-        <div class="oss-icon">🔩</div>
-        <div class="oss-info"><h4>[mech] thermal-loop-sizing</h4><p>Mechanical · Manifold design, flow balancing, pump sizing — sympy + scipy TDD</p></div>
-        <div class="oss-arrow">→</div>
-      </a>
-      <a href="https://github.com/engineering-with-ai/python-mcp-server" class="oss-artifact" target="_blank" rel="noopener">
-        <div class="oss-icon">🤖</div>
-        <div class="oss-info"><h4>[software] python-domain-mcp-server</h4><p>Domain powered MCP server RAG/Graph technologies</p></div>
-        <div class="oss-arrow">→</div>
-      </a>
-    </div>
-  </div>
-</section>
 <!-- ABOUT -->
 <section class="about-section" id="about">
   <div class="section-label reveal">About</div>
