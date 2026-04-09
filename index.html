@@ -221,17 +221,6 @@ section { padding:100px 48px; }
 .path-card.learn .path-price { color:var(--ink-soft); }
 .path-card.consult .path-price { color:rgba(255,255,255,0.2); }
 
-/* AUDIENCE */
-.audience-section { background:var(--bg); }
-.audience-inner { max-width:800px; }
-.audience-inner h2 { font-family:var(--serif); font-size:clamp(30px,2.8vw,46px); font-weight:400; line-height:1.2; margin-bottom:32px; }
-.audience-list { list-style:none; }
-.audience-list li { font-size:15px; color:var(--ink-mid); line-height:1.75; padding:18px 0; border-bottom:1px solid var(--border); display:flex; gap:16px; }
-.audience-card { background:var(--white); border:1px solid var(--border); padding:48px; }
-.audience-list li:first-child { border-top:none; padding-top:0; }
-.audience-list li::before { content:'→'; color:var(--accent); flex-shrink:0; font-family:var(--mono); padding-top:1px; }
-.audience-caveat { font-family:var(--mono); font-size:12px; color:var(--ink-soft); letter-spacing:0.04em; margin-top:28px; line-height:1.6; }
-
 /* OSS */
 .oss-section { background:var(--bg2); }
 .oss-inner { max-width:1200px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
@@ -395,6 +384,7 @@ footer { background:var(--ink); padding:80px 48px 40px; }
       <h2>Self-correcting engineering<br><em>is the differentiator.</em></h2>
       <p>The discipline is in the validation gates and composable primitives that catch failure across electrical, mechanical, and software disciplines.</p>
       <p>By creating a predictable environment and giving the agent means to verify its own output at each gate, you get the speed of AI generation without inheriting its failure modes.</p>
+      <p style="font-family:var(--mono);font-size:11px;color:var(--ink-soft);letter-spacing:0.04em;line-height:1.8;margin-top:24px;">For: AI datacenter developers · Microgrid &amp; energy operators · Defense &amp; sovereign deployments · Engineering teams adopting AI-augmented workflows</p>
     </div>
     <div class="method-right">
       <div class="method-step reveal">
@@ -422,23 +412,6 @@ footer { background:var(--ink); padding:80px 48px 40px; }
   </div>
 </section>
 
-
-<!-- AUDIENCE -->
-<section class="audience-section">
-  <div class="audience-inner reveal">
-    <div class="section-label">Audience</div>
-    <h2>Who this is for:</h2>
-    <div class="audience-card">
-      <ul class="audience-list">
-        <li>AI datacenter developers integrating BESS, thermal, and compute into deployable infrastructure — and needing the engineering documentation to match.</li>
-        <li>Microgrid and energy operators who need an EMS that reasons about sensor data, not just logs it.</li>
-        <li>Defense and sovereign deployments where off-grid, air-gapped, or expeditionary compute has to work the first time.</li>
-        <li>Engineering teams adopting AI-augmented workflows across electrical, mechanical, or software disciplines — and want a methodology, not a toolchain tutorial.</li>
-      </ul>
-      <p class="audience-caveat">If you're still in the "should we use AI?" phase, this isn't the right starting point.</p>
-    </div>
-  </div>
-</section>
 
 <!-- OSS -->
 <section class="oss-section" id="oss">
