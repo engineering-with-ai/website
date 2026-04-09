@@ -613,12 +613,16 @@ footer { background:var(--ink); padding:80px 48px 40px; }
     <div class="section-label">Consulting</div>
     <h2>Tell me what you're building.<br><em>I'll tell you if I can help.</em></h2>
     <p>Engagements are scoped, not open-ended. If your problem fits the methodology — off-grid AI compute, defense/sovereign resilience, energy tech architecture — send a brief description and I'll tell you whether I can help.</p>
-    <div class="form-stack">
-      <input type="text" placeholder="Organisation / context" />
-      <input type="email" placeholder="Email address" />
-      <textarea rows="5" placeholder="Describe the problem. What are you building, what's the constraint, what does success look like?"></textarea>
-    </div>
-    <button class="btn-primary" style="width:100%;justify-content:center;margin-top:4px;">Submit inquiry →</button>
+    <form id="contact-form">
+      <input type="hidden" name="access_key" value="80dc15d5-603d-4225-b6be-89fecec727b4">
+      <div class="form-stack">
+        <input type="text" name="name" placeholder="Organisation / context" required />
+        <input type="email" name="email" placeholder="Email address" required />
+        <textarea name="message" rows="5" placeholder="Describe the problem. What are you building, what's the constraint, what does success look like?" required></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width:100%;justify-content:center;margin-top:4px;">Submit inquiry →</button>
+    </form>
+    <p id="form-status" class="form-note" style="display:none;"></p>
     <p class="form-note">Defense and sovereign inquiries: include classification level in your message. Responses within 48 hours.</p>
   </div>
 </section>
@@ -665,6 +669,39 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach((el, i) => {
   el.style.transitionDelay = `${(i % 5) * 0.06}s`;
   observer.observe(el);
+});
+
+document.getElementById('contact-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const btn = form.querySelector('button[type="submit"]');
+  const status = document.getElementById('form-status');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  status.style.display = 'none';
+  try {
+    const res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(Object.fromEntries(new FormData(form)))
+    });
+    const data = await res.json();
+    if (data.success) {
+      status.textContent = 'Inquiry sent — expect a response within 48 hours.';
+      status.style.color = 'var(--accent)';
+      status.style.display = 'block';
+      form.reset();
+    } else {
+      throw new Error(data.message || 'Submission failed');
+    }
+  } catch (err) {
+    status.textContent = 'Something went wrong — try again or email directly.';
+    status.style.color = '#c0392b';
+    status.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Submit inquiry →';
+  }
 });
 </script>
 </body>
