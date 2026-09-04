@@ -82,6 +82,8 @@ section { padding:100px 48px; }
 .project-section { background:var(--bg2); padding-top:60px; }
 .project-card { background:var(--white); border:1px solid var(--border); padding:56px; max-width:1200px; display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center; position:relative; overflow:hidden; }
 .project-card::before { content:'LIVE PROJECT'; position:absolute; top:18px; right:28px; font-family:var(--mono); font-size:9px; letter-spacing:0.2em; color:var(--white); background:var(--accent); padding:5px 12px; }
+.project-card + .project-card { margin-top:28px; }
+.project-card.personal::before { content:'PERSONAL PROJECT'; background:var(--ink-mid); }
 .project-card-left h3 { font-family:var(--mono); font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--ink-soft); margin-bottom:14px; }
 .project-card-left h2 { font-family:var(--serif); font-size:clamp(30px,2.8vw,46px); font-weight:700; line-height:1.1; margin-bottom:18px; }
 .project-card-left p { font-size:15px; color:var(--ink-mid); line-height:1.75; margin-bottom:28px; }
@@ -444,8 +446,8 @@ footer { background:var(--ink); padding:80px 48px 40px; }
 
 <!-- PROJECT -->
 <section class="project-section" id="work">
-  <div class="section-label reveal">Live Project</div>
-  <p class="reveal" style="font-size:15px;color:var(--ink-mid);line-height:1.75;max-width:600px;margin-bottom:48px;">Here's the methodology applied to a real project — all three disciplines converging on one system.</p>
+  <div class="section-label reveal">Projects</div>
+  <p class="reveal" style="font-size:15px;color:var(--ink-mid);line-height:1.75;max-width:600px;margin-bottom:48px;">The methodology applied to real work — one project converging electrical, mechanical, and software on physical infrastructure, one pointing the same agentic workflow at everyday life.</p>
   <div class="project-card reveal">
     <div class="project-card-left">
       <h3>Current Project</h3>
@@ -471,6 +473,31 @@ footer { background:var(--ink); padding:80px 48px 40px; }
       <div class="spec-row"><span class="spec-key">Status</span><span class="spec-val">Active — documented in public</span></div>
     </div>
 
+  </div>
+
+  <div class="project-card personal reveal">
+    <div class="project-card-left">
+      <h3>Personal Project</h3>
+      <h2>OTIUM</h2>
+      <p>A personal life-management system that closes the gap between your stated priorities and how your days actually go. You define what's worth your time; OTIUM checks your money, inbox, and incoming requests against those rules and reports back every week. Open source, open standards, fully exportable by design.</p>
+      <div class="project-tags">
+        <span class="tag">Personal Automation</span>
+        <span class="tag">Account Aggregation</span>
+        <span class="tag">Rules Engine</span>
+        <span class="tag">Agentic AI</span>
+        <span class="tag">Open Source</span>
+      </div>
+      <a href="https://otium.run" class="project-link" target="_blank" rel="noopener">View OTIUM →</a>
+    </div>
+    <div class="project-specs">
+      <div class="spec-row"><span class="spec-key">Phase 1 — Now</span><span class="spec-val">Financial aggregation · spend vs. goals · rules-based inbox</span></div>
+      <div class="spec-row"><span class="spec-key">Phase 2</span><span class="spec-val">AI comms · money movement · disputes (pending regulation)</span></div>
+      <div class="spec-row"><span class="spec-key">Phase 3</span><span class="spec-val">Physical task execution via home robots</span></div>
+      <div class="spec-row"><span class="spec-key">Interface</span><span class="spec-val">No fixed UI — views generated on request</span></div>
+      <div class="spec-row"><span class="spec-key">Data</span><span class="spec-val">Portable · exportable · open standards</span></div>
+      <div class="spec-row"><span class="spec-key">Source</span><span class="spec-val">gitlab.com/otium-hq</span></div>
+      <div class="spec-row"><span class="spec-key">Status</span><span class="spec-val">Active — building in public</span></div>
+    </div>
   </div>
 </section>
 
