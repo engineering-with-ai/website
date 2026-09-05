@@ -5,7 +5,7 @@ stages:
 deploy:
   stage: deploy
   script:
-    - aws s3 sync . s3://engineeringwithai --exclude ".git/*" --exclude ".gitlab-ci.yml" --exclude ".gitignore" --exclude "CLAUDE.md" --delete
+    - aws s3 sync . s3://engineeringwithai --exclude ".git/*" --exclude ".gitlab-ci.yml" --exclude ".gitignore" --exclude "CLAUDE.md" --exclude "tools/*" --delete
     - aws cloudfront create-invalidation --distribution-id EPJSTCT5D6CBK --paths "/*"
   only:
     - main
