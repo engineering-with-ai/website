@@ -19,6 +19,7 @@ from __future__ import annotations
 import argparse
 import io
 import sys
+import urllib.error
 import urllib.request
 from html.parser import HTMLParser
 from pathlib import Path
@@ -115,6 +116,28 @@ def check_image_reachable(url: str) -> list[str]:
     return failures
 
 
+def check_robots_txt(page_url: str) -> list[str]:
+    """A 403 on /robots.txt makes LinkedInBot treat the whole site as disallowed,
+    so the crawler never fetches the page and Post Inspector reports a generic
+    'Unable to connect' error. It must return 2xx (or 404)."""
+    from urllib.parse import urljoin
+
+    url = urljoin(page_url if page_url.endswith("/") else page_url + "/", "/robots.txt")
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "og-verify/1.0"})
+        with urllib.request.urlopen(req, timeout=30) as resp:  # noqa: S310
+            code = resp.status
+    except urllib.error.HTTPError as exc:
+        code = exc.code
+    except Exception as exc:  # noqa: BLE001
+        return [f"robots.txt not reachable: {exc}"]
+    if code == 403:
+        return [f"{url} returns 403 - LinkedInBot will treat the site as fully disallowed"]
+    if code >= 500:
+        return [f"{url} returns {code} - crawlers treat 5xx on robots.txt as fully disallowed"]
+    return []
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--url", help="Inspect a deployed page instead of local index.html")
@@ -126,6 +149,7 @@ def main() -> int:
     failures = check_tags(collector.meta, collector.links)
     if args.url:
         failures += check_image_reachable(collector.meta.get("og:image", IMAGE_URL))
+        failures += check_robots_txt(args.url)
 
     target = args.url or str(REPO_ROOT / "index.html")
     if failures:
