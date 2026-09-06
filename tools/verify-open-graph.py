@@ -74,6 +74,8 @@ def check_tags(meta: dict[str, str], links: dict[str, str]) -> list[str]:
     want("og:description")
     want("og:url", SITE_URL)
     want("og:image", IMAGE_URL)
+    want("og:image:secure_url", IMAGE_URL)
+    want("og:image:type", "image/png")
     want("og:image:width", str(IMAGE_SIZE[0]))
     want("og:image:height", str(IMAGE_SIZE[1]))
     want("og:image:alt")
